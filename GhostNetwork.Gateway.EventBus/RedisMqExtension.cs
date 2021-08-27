@@ -14,8 +14,11 @@ namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
     public static class RedisEventBusExtension
     {
         /// <summary>
-        /// Add IEventSender to your DI.
+        /// Add IEventSender to your DI as Singletone.
         /// </summary>
+        /// <returns>
+        /// IService collection with added EventSender as IHostedService.
+        /// </returns>
         public static IServiceCollection AddEventSenderAsSingletone(this IServiceCollection services, ConfigurationOptions redisConfiguration)
         {
             IDatabase redisDb = null;
@@ -34,8 +37,11 @@ namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
         }
 
         /// <summary>
-        /// Add IEventSender to your DI.
-        /// </summary>s
+        /// Add IEventSender to your DI as Singletone.
+        /// </summary>
+        /// <returns>
+        /// IService collection with added EventSender as IHostedService.
+        /// </returns>
         public static IServiceCollection AddEventSenderAsSingletone(this IServiceCollection services, string connectionString)
         {
             IDatabase redisDb = null;
@@ -54,8 +60,16 @@ namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
         }
 
         /// <summary>
-        /// Add IHostedService that start redis event-bus to your DI.
+        /// Add RedisEventsHostedService for start event listening as IHostedService to your DI.
         /// </summary>
+        /// <remarks>
+        /// RedisHostedService works from start and to end working of application.
+        /// Also pay your attention to added handlers that implemented IEventHandler interfaces to your DI. 
+        /// It have decraled wich event workers will start after sucsesfull connecting to Redis-Server.
+        /// </remarks>
+        /// <returns>
+        /// IService collection with added RedisEventsHostedService as IHostedService.
+        /// </returns>
         public static IServiceCollection AddHostedWorkerService(this IServiceCollection services, ConfigurationOptions redisConfiguration)
         {
             services.AddHostedService(provider => new RedisHandlerHostedService(provider, redisConfiguration));
@@ -65,6 +79,14 @@ namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
         /// <summary>
         /// Add IHostedService that start redis event-bus to your DI.
         /// </summary>
+        /// <remarks>
+        /// RedisHostedService works from start and to end working of application.
+        /// Also pay your attention to added handlers that implemented IEventHandler interfaces to your DI. 
+        /// It have decraled wich event workers will start after sucsesfull connecting to Redis-Server.
+        /// </remarks>
+        /// <returns>
+        /// IService collection with added RedisEventsHostedService as IHostedService.
+        /// </returns>
         public static IServiceCollection AddHostedWorkerService(this IServiceCollection services, string connectionString)
         {
             services.AddHostedService(provider => new RedisHandlerHostedService(provider, connectionString));
