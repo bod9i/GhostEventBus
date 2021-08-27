@@ -72,7 +72,7 @@ namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
         /// </returns>
         public static IServiceCollection AddHostedWorkerService(this IServiceCollection services, ConfigurationOptions redisConfiguration)
         {
-            services.AddHostedService(provider => new RedisHandlerHostedService(provider, redisConfiguration));
+            services.AddHostedService(provider => new RedisEventsHostedService(provider, redisConfiguration));
             return services;
         }
 
@@ -89,7 +89,7 @@ namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
         /// </returns>
         public static IServiceCollection AddHostedWorkerService(this IServiceCollection services, string connectionString)
         {
-            services.AddHostedService(provider => new RedisHandlerHostedService(provider, connectionString));
+            services.AddHostedService(provider => new RedisEventsHostedService(provider, connectionString));
             return services;
         }
     }

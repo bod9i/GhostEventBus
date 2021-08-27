@@ -8,7 +8,7 @@ using StackExchange.Redis;
 
 namespace GhostNetwork.Gateway.RedisMq
 {
-    internal class RedisHandlerHostedService : IHostedService
+    internal class RedisEventsHostedService : IHostedService
     {
         private const int Timeout = 5000;
 
@@ -17,13 +17,13 @@ namespace GhostNetwork.Gateway.RedisMq
         private readonly string connectionString;
         private ConnectionMultiplexer conn;
 
-        public RedisHandlerHostedService(IServiceProvider serviceProvider, ConfigurationOptions redisConfiguration)
+        public RedisEventsHostedService(IServiceProvider serviceProvider, ConfigurationOptions redisConfiguration)
         {
             this.serviceProvider = serviceProvider;
             this.redisConfiguration = redisConfiguration;
         }
 
-        public RedisHandlerHostedService(IServiceProvider serviceProvider, string connectionString)
+        public RedisEventsHostedService(IServiceProvider serviceProvider, string connectionString)
         {
             this.serviceProvider = serviceProvider;
             this.connectionString = connectionString;
