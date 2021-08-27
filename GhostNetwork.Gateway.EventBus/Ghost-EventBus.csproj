@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bod9i/GhostEventBus</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>EventBus for .Net</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>Bohdan Kolomeiets</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,5 +15,10 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.2.62" />
   </ItemGroup>
-
+  <PropertyGroup>
+	  <PackageLicenseFile>Licencse.txt</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup>
+	  <None Include="Licencse.txt" Pack="true" PackagePath="Licencse.txt"/>
+  </ItemGroup>
 </Project>
