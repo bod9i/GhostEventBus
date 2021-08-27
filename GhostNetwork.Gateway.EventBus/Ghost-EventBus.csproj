@@ -11,14 +11,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Licencse.txt" />
+    <None Remove="Licencse.txt" />
+    <None Include="Licencse.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.2.62" />
   </ItemGroup>
   <PropertyGroup>
 	  <PackageLicenseFile>Licencse.txt</PackageLicenseFile>
+	  <PackageReleaseNotes>In actual build has implementation to sending and handling event based on Redis.
+
+See README.md 'How to start event proccesing based on Redis server for ASP.Net.' in repository.</PackageReleaseNotes>
+	  <Description>It's lightweight library for implementing sending and listening events.
+Library exposes all you need interfaces and models to build simple solution for event processing.
+
+Visit repository for detail.</Description>
+	  <NeutralLanguage>en-TC</NeutralLanguage>
+	  <AssemblyVersion>1.0.0.1</AssemblyVersion>
+	  <FileVersion>1.0.0.1</FileVersion>
+	  <Version>1.0.1</Version>
   </PropertyGroup>
-  <ItemGroup>
-	  <None Include="Licencse.txt" Pack="true" PackagePath="Licencse.txt"/>
-  </ItemGroup>
 </Project>
