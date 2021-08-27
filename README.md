@@ -13,3 +13,7 @@ To add this you need add implementation of IEventSender to your DI by extension-
 
 Also pay your attention to added handlers that implemented IEventHandler interfaces to your DI. 
 It have decraled wich event workers will start after sucsesfull connecting to Redis-Server.
+
+## How get
+
+Find package as 'GhostEventBus' in nuget-gallery or visit: https://www.nuget.org/packages/Ghost-EventBus
