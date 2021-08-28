@@ -7,7 +7,7 @@ Library exposes all you need interfaces and models to build simple solution for 
 
 See public class RedisMqExtension.
 
-To start event listenings you need add to your ASP-DI by extension-method AddHostedWorkerService.
+To start event listenings you need add to your ASP-DI RedisEventsHostedService by extension-method AddHostedWorkerService.
 Also solution have implemented event sender. 
 To add this you need add implementation of IEventSender to your DI by extension-method AddEventSenderAsSingletone.
 
