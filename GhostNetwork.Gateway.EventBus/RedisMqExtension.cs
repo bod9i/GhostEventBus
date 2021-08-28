@@ -1,15 +1,13 @@
-
+using GhostEventBus.Events;
+using GhostEventBus.RedisMq.Implementation;
+using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GhostNetwork.Gateway.EventBus.Events;
-using GhostNetwork.Gateway.EventBus.RedisMq;
-using GhostNetwork.Gateway.RedisMq;
-using Microsoft.Extensions.DependencyInjection;
-using StackExchange.Redis;
 
-namespace GhostNetwork.Gateway.EventBus.Extensions.RedisMq
+namespace GhostEventBus.RedisMq.Extensions
 {
     public static class RedisEventBusExtension
     {

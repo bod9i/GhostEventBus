@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using GhostNetwork.Gateway.EventBus.Extensions.RedisMq;
-using GhostNetwork.Gateway.EventBus.RedisMq;
+﻿using GhostEventBus.RedisMq.Extensions;
+using GhostEventBus.RedisMq.Implementation;
 using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace GhostNetwork.Gateway.RedisMq
+namespace GhostEventBus.RedisMq
 {
     internal class RedisEventsHostedService : IHostedService
     {

@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using GhostNetwork.Gateway.EventBus.Events;
+﻿using GhostEventBus.Events;
+using System.Threading.Tasks;
 
-namespace GhostNetwork.Gateway.EventBus
+namespace GhostEventBus
 {
     /// <summary>
     /// Exposes the functionality to handle events.

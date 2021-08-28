@@ -1,12 +1,12 @@
-﻿using GhostNetwork.Gateway.EventBus.Events;
+﻿using GhostEventBus.Events;
+using GhostEventBus.RedisMq.Extensions;
 using StackExchange.Redis;
 using System;
 using System.Text.Json;
 using System.Threading;
-using GhostNetwork.Gateway.EventBus.Extensions.RedisMq;
 using System.Threading.Tasks;
 
-namespace GhostNetwork.Gateway.EventBus.RedisMq
+namespace GhostEventBus.RedisMq.Implementation
 {
     internal class EventWorker : IEventWorker
     {

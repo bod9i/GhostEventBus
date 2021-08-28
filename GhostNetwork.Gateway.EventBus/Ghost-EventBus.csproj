@@ -28,14 +28,15 @@
 	  <PackageLicenseFile>Licencse.txt</PackageLicenseFile>
 	  <PackageReleaseNotes>In actual build has implementation to sending and handling event based on Redis.
 
-See README.md 'How to start event proccesing based on Redis server for ASP.Net.' in repository.</PackageReleaseNotes>
+See README.md 'How to start event proccesing based on Redis server for ASP.Net.' in repository.
+Some changes in namespaces.</PackageReleaseNotes>
 	  <Description>It's lightweight library for implementing sending and listening events.
 Library exposes all you need interfaces and models to build simple solution for event processing.
 
 Visit repository for detail.</Description>
-	  <NeutralLanguage>en-TC</NeutralLanguage>
+	  <NeutralLanguage>en-US</NeutralLanguage>
 	  <AssemblyVersion>1.0.0.1</AssemblyVersion>
 	  <FileVersion>1.0.0.1</FileVersion>
-	  <Version>1.0.1</Version>
+	  <Version>1.0.2</Version>
   </PropertyGroup>
 </Project>

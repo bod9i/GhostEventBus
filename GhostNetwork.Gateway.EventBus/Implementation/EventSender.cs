@@ -1,9 +1,9 @@
-﻿using GhostNetwork.Gateway.EventBus.Events;
+﻿using GhostEventBus.Events;
 using StackExchange.Redis;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace GhostNetwork.Gateway.EventBus.RedisMq
+namespace GhostEventBus.RedisMq.Implementation
 {
     internal class EventSender : IEventSender
     {

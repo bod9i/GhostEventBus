@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GhostNetwork.Gateway.EventBus.Events
+namespace GhostEventBus.Events
 {
     public abstract class EventBase
     {

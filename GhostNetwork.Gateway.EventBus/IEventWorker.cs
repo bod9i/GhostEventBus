@@ -1,7 +1,7 @@
-﻿using System;
-using GhostNetwork.Gateway.EventBus.Events;
+﻿using GhostEventBus.Events;
+using System;
 
-namespace GhostNetwork.Gateway.EventBus
+namespace GhostEventBus
 {
     /// <summary>
     /// Exposes the functionality for starting event listening.

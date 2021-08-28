@@ -1,7 +1,7 @@
+using GhostEventBus.Events;
 using System.Threading.Tasks;
-using GhostNetwork.Gateway.EventBus.Events;
 
-namespace GhostNetwork.Gateway.EventBus
+namespace GhostEventBus
 {
     /// <summary>
     /// Exposes the functionality to sending events to queue.
