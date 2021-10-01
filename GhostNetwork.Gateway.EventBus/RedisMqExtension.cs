@@ -117,8 +117,9 @@ namespace GhostEventBus.RedisMq.Extensions
             
             foreach (var type in typeOfHandlers)
             {
-                var handler = serviceProvider.GetService(type) as IEventHandler;
-                    
+                using var scope = serviceProvider.CreateScope();
+                var handler = scope.ServiceProvider.GetService(type) as IEventHandler;
+
                 if (handler == null)
                 {
                     continue;
@@ -147,8 +148,9 @@ namespace GhostEventBus.RedisMq.Extensions
             
             foreach (var type in typeOfHandlers)
             {
-               var handler = serviceProvider.GetService(type) as IEventHandler<TEvent>;
-                    
+                using var scope = serviceProvider.CreateScope();
+                var handler =  scope.ServiceProvider.GetService(type) as IEventHandler<TEvent>;
+
                 if (handler == null)
                 {
                     continue;
@@ -177,8 +179,9 @@ namespace GhostEventBus.RedisMq.Extensions
             
             foreach (var t in typeOfHandlers)
             {
-               var handler = serviceProvider.GetService(t) as IEventHandler;
-                    
+                using var scope = serviceProvider.CreateScope();
+                var handler = scope.ServiceProvider.GetService(type) as IEventHandler;
+
                 if (handler == null)
                 {
                     continue;
