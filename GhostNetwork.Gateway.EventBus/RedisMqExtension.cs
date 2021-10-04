@@ -133,12 +133,11 @@ namespace GhostEventBus.RedisMq.Extensions
 
         public static IEnumerable<IEventHandler<TEvent>> GetHandlers<TEvent>(this IServiceProvider serviceProvider) where TEvent : EventBase, new()
         {
-            var typeOfHandlers = Assembly
-                .GetExecutingAssembly()
-                .GetTypes()
-                .Where(t => typeof(IEventHandler<TEvent>).IsAssignableFrom(t))
-                .Where(types => types.GetTypeInfo().ImplementedInterfaces
-                    .Any(ii => ii.IsGenericType && ii.GetTypeInfo().GenericTypeArguments.Any(arg => arg.FullName == typeof(TEvent).FullName))
+            var typeOfHandlers = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(assembly => assembly != Assembly.GetExecutingAssembly())
+                .SelectMany(a => a.GetTypes()
+                    .Where(t => typeof(IEventHandler<TEvent>).IsAssignableFrom(t))
+                    .Where(types => types.GetTypeInfo().ImplementedInterfaces.Any(ii => ii.IsGenericType))
                 );
 
             if (!typeOfHandlers.Any())
@@ -164,12 +163,12 @@ namespace GhostEventBus.RedisMq.Extensions
 
         public static IEnumerable<IEventHandler> GetHandlers(this IServiceProvider serviceProvider, Type type)
         {
-            var typeOfHandlers = Assembly
-                .GetExecutingAssembly()
-                .GetTypes()
-                .Where(t => typeof(IEventHandler).IsAssignableFrom(t))
-                .Where(types => types.GetTypeInfo().ImplementedInterfaces
-                    .Any(ii => ii.IsGenericType && ii.GetTypeInfo().GenericTypeArguments.Any(arg => arg.FullName == type.FullName))
+            var typeOfHandlers = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(assembly => assembly != Assembly.GetExecutingAssembly())
+                .SelectMany(a => a.GetTypes()
+                    .Where(t => typeof(IEventHandler).IsAssignableFrom(t))
+                    .Where(types => types.GetTypeInfo().ImplementedInterfaces.Any(ii => ii.IsGenericType &&
+                        ii.GetTypeInfo().GenericTypeArguments.Any(arg => arg.FullName == type.FullName)))
                 );
 
             if (!typeOfHandlers.Any())
