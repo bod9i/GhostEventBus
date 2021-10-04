@@ -38,8 +38,16 @@ namespace GhostEventBus.RedisMq.Implementation
                         }
                         else Thread.Sleep(500);
                     }
-                    catch (RedisConnectionException) 
-                    {  
+                    catch (RedisConnectionException)
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    catch (RedisTimeoutException)
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    catch (Exception)
+                    {
                         Thread.Sleep(5000);
                     }
                 }
@@ -65,8 +73,16 @@ namespace GhostEventBus.RedisMq.Implementation
                         }
                         else Thread.Sleep(500);
                     }
-                    catch (RedisConnectionException) 
-                    {  
+                    catch (RedisConnectionException)
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    catch (RedisTimeoutException)
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    catch (Exception)
+                    {
                         Thread.Sleep(5000);
                     }
                 }
