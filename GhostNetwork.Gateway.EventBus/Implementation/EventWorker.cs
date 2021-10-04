@@ -19,9 +19,9 @@ namespace GhostEventBus.RedisMq.Implementation
             this.serviceProvider = serviceProvider;
         }
 
-        public void Subscribe<TEvent>() where TEvent : EventBase, new()
+        public async void Subscribe<TEvent>() where TEvent : EventBase, new()
         {
-            Task.Run(async () => 
+            await Task.Run(async () => 
             {
                 while (true)
                 {
@@ -54,9 +54,9 @@ namespace GhostEventBus.RedisMq.Implementation
             });
         }
 
-        public void Subscribe(string key, Type type) 
+        public async void Subscribe(string key, Type type) 
         {
-            Task.Run(async () => 
+            await Task.Run(async () => 
             {
                 while (true)
                 {
