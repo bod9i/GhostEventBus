@@ -35,8 +35,8 @@ Library exposes all you need interfaces and models to build simple solution for 
 
 Visit repository for detail.</Description>
 	  <NeutralLanguage>en-US</NeutralLanguage>
-	  <AssemblyVersion>1.0.0.3</AssemblyVersion>
-	  <FileVersion>1.0.0.3</FileVersion>
-	  <Version>1.0.3</Version>
+	  <AssemblyVersion>1.0.5</AssemblyVersion>
+	  <FileVersion>1.0.5</FileVersion>
+	  <Version>1.0.5</Version>
   </PropertyGroup>
 </Project>
