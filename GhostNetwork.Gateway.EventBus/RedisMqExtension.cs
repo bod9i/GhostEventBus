@@ -114,18 +114,20 @@ namespace GhostEventBus.RedisMq.Extensions
                 throw new ArgumentException("Input type is not declared as inheritor of IEventHandler<Event>");
 
             var typeOfEvents = new List<Type>();
-            
-            foreach (var type in typeOfHandlers)
+
+            using (var scope = serviceProvider.CreateScope())
             {
-                using var scope = serviceProvider.CreateScope();
-                var handler = scope.ServiceProvider.GetService(type) as IEventHandler;
-
-                if (handler == null)
+                foreach (var type in typeOfHandlers)
                 {
-                    continue;
-                }
+                    var handler = scope.ServiceProvider.GetService(type) as IEventHandler;
 
-                typeOfEvents.Add(type.GetTypeInfo().ImplementedInterfaces.First().GetTypeInfo().GenericTypeArguments[0]);
+                    if (handler == null)
+                    {
+                        continue;
+                    }
+
+                    typeOfEvents.Add(type.GetTypeInfo().ImplementedInterfaces.First().GetTypeInfo().GenericTypeArguments[0]);
+                }
             }
 
             return typeOfEvents.Distinct();
@@ -144,18 +146,20 @@ namespace GhostEventBus.RedisMq.Extensions
                 throw new ArgumentException("Input type is not declared as inheritor of IEventHandler<Event>");
 
             var handlers = new List<IEventHandler<TEvent>>();
-            
-            foreach (var type in typeOfHandlers)
+
+            using (var scope = serviceProvider.CreateScope())
             {
-                using var scope = serviceProvider.CreateScope();
-                var handler =  scope.ServiceProvider.GetService(type) as IEventHandler<TEvent>;
-
-                if (handler == null)
+                foreach (var type in typeOfHandlers)
                 {
-                    continue;
-                }
+                    var handler = scope.ServiceProvider.GetService(type) as IEventHandler<TEvent>;
 
-                handlers.Add(handler);
+                    if (handler == null)
+                    {
+                        continue;
+                    }
+
+                    handlers.Add(handler);
+                }
             }
 
             return handlers;
@@ -175,18 +179,20 @@ namespace GhostEventBus.RedisMq.Extensions
                 throw new ArgumentException("Input type is not declared as inheritor of IEventHandler");
 
             var handlers = new List<IEventHandler>();
-            
-            foreach (var t in typeOfHandlers)
+
+            using (var scope = serviceProvider.CreateScope())
             {
-                using var scope = serviceProvider.CreateScope();
-                var handler = scope.ServiceProvider.GetService(type) as IEventHandler;
-
-                if (handler == null)
+                foreach (var handlerType in typeOfHandlers)
                 {
-                    continue;
-                }
+                    var handler = scope.ServiceProvider.GetService(handlerType) as IEventHandler;
 
-                handlers.Add(handler);
+                    if (handler == null)
+                    {
+                        continue;
+                    }
+
+                    handlers.Add(handler);
+                }
             }
 
             return handlers;
