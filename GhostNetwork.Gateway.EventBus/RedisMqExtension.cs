@@ -58,6 +58,21 @@ namespace GhostEventBus.RedisMq.Extensions
         }
 
         /// <summary>
+        /// Add IEventSender as NullEventSender to your DI as Singletone.
+        /// </summary>
+        /// <remarks>
+        /// NullEventSender does nothing. This is needed to simulate sending messages for different cases. 
+        /// </remarks>
+        /// <returns>
+        /// IService collection with added EventSender as IEventSender.
+        /// </returns>
+        public static IServiceCollection AddNullEventSenderAsSingletone(this IServiceCollection services)
+        {            
+            services.AddSingleton<IEventSender>(new NullEventSender());
+            return services;
+        }
+
+        /// <summary>
         /// Add RedisEventsHostedService for start event listening as IHostedService to your DI.
         /// </summary>
         /// <remarks>
