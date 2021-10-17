@@ -15,16 +15,10 @@ namespace GhostEventBus.RedisMq.Extensions
         /// Add IEventSender to your DI as Singletone.
         /// </summary>
         /// <returns>
-        /// IService collection with added EventSender as IHostedService.
+        /// IService collection with added EventSender as IEventSender.
         /// </returns>
-        public static IServiceCollection AddEventSenderAsSingletone(this IServiceCollection services, ConfigurationOptions redisConfiguration, bool returnDisabledSender = false)
+        public static IServiceCollection AddEventSenderAsSingletone(this IServiceCollection services, ConfigurationOptions redisConfiguration)
         {
-            if (returnDisabledSender)
-            {
-                services.AddSingleton<IEventSender>(new EventSender(db: null));
-                return services;
-            }
-
             IDatabase redisDb = null;
 
             try
@@ -44,16 +38,10 @@ namespace GhostEventBus.RedisMq.Extensions
         /// Add IEventSender to your DI as Singletone.
         /// </summary>
         /// <returns>
-        /// IService collection with added EventSender as IHostedService.
+        /// IService collection with added EventSender as IEventSender.
         /// </returns>
-        public static IServiceCollection AddEventSenderAsSingletone(this IServiceCollection services, string connectionString, bool returnDisabledSender = false)
+        public static IServiceCollection AddEventSenderAsSingletone(this IServiceCollection services, string connectionString)
         {
-            if (returnDisabledSender)
-            {
-                services.AddSingleton<IEventSender>(new EventSender(db: null));
-                return services;
-            }
-
             IDatabase redisDb = null;
 
             try
