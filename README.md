@@ -1,18 +1,21 @@
 # GhostEventBus
 
 It's lightweight library for implementing sending and listening events.
-Library exposes all you need interfaces and models to build simple solution for event processing.
+Library exposes all you need interfaces and models to build simple event-processing solution.
 
 ## How to start event proccesing based on Redis server for ASP.Net
 
 See public class RedisMqExtension.
 
-To start event listenings you need add to your ASP-DI RedisEventsHostedService by extension-method AddHostedWorkerService.
-Also solution have implemented event sender. 
-To add this you need add implementation of IEventSender to your DI by extension-method AddEventSenderAsSingletone.
+Solution have implemented event sender. For using you need add implementation of IEventSender to your DI by extension-method 'AddEventSenderAsSingletone'.
 
-Also pay your attention to added handlers that implemented IEventHandler interfaces to your DI. 
-It have decraled wich event workers will start after sucsesfull connecting to Redis-Server.
+To start event listening you need add RedisEventsHostedService by extension-method 'AddHostedWorkerService' to your ASP-DI. 
+
+To specify types of listened events you need implement 'IEventHandler<TEvent>' interface and add implementations to your DI. 
+On starts event listening solution analizes your assemblies by reflection and try getting implementations of this interface by 'IServiceProvider'.
+
+### By your attention
+Receiving and sending data to queue is working by 'LPUSH' && LPOP redis-commands.
 
 ## How get
 
