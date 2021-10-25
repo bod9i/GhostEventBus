@@ -14,7 +14,7 @@ To start event listening you need add RedisEventsHostedService by extension-meth
 To specify types of listened events you need implement 'IEventHandler<TEvent>' interface and add implementations to your DI. 
 On starts event listening solution analizes your assemblies by reflection and try getting implementations of this interface by 'IServiceProvider'.
 
-### By your attention
+### Pay your attention
 Receiving and sending data to queue is working by 'LPUSH' && LPOP redis-commands.
 
 ## How get
